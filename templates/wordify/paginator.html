@@ -1,0 +1,18 @@
+<div class="row mt-5">
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation" class="text-center">
+            <ul class="pagination">
+                {% if object_list.has_previous %}
+                <li><a href="?page={{ object_list.previous_page_number }}"><</a></li>
+                {% endif %}
+                {% for page_item in object_list.paginator.page_range %}
+                <li class="{% if page_item == object_list.number %}active{% endif %}"><a
+                        href="?page={{ page_item }}"><span>{{ page_item }}</span></a></li>
+                {% endfor %}
+                {% if object_list.has_next %}
+                <li><a href="?page={{ object_list.next_page_number }}">></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
